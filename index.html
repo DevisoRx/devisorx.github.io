@@ -40,7 +40,7 @@
             const commandLine1 = document.getElementById("commandLine1");
             const commandLine2 = document.getElementById("commandLine2");
 
-            let directories = { "home": "home.html", "about": "about.html", "projects": "passgen.html", "contact": "contact.html" };
+            let directories = { "Home": "home.html", "About": "about.html", "PasswordGen": "passgen.html", "Contact": "contact.html" };
 
             let commandText = "ls";
             let commandText2 = "cat welcome.txt";
@@ -51,7 +51,7 @@
             // Função para digitar a linha do comando "user@website:~$"
             let userIndex = 0;
             function typeUserLine() {
-                const userText = "user@website:~$ ";
+                const userText = "root@kali:~$ ";
                 if (userIndex < userText.length) {
                     commandLine1.innerHTML += userText[userIndex];
                     userIndex++;
@@ -74,7 +74,7 @@
 
             // Função para exibir o output do comando "ls" de forma gradual
             let outputIndex = 0;
-            let lsOutput = ["home", "about", "projects", "contact"]; // Simulação dos diretórios como uma lista
+            let lsOutput = ["Home", "About", "PasswordGen", "Contact"]; // Simulação dos diretórios como uma lista
             function displayLsOutput() {
                 if (outputIndex < lsOutput.length) {
                     let dir = lsOutput[outputIndex];
@@ -92,7 +92,7 @@
             // Função para digitar a segunda linha "user@website:~$"
             let userIndex2 = 0;
             function typeUserLine2() {
-                const userText2 = "user@website:~$ ";
+                const userText2 = "root@kali:~$ ";
                 if (userIndex2 < userText2.length) {
                     commandLine2.innerHTML += userText2[userIndex2];
                     userIndex2++;

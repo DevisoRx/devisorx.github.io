@@ -117,3 +117,26 @@ button:hover {
 #home-button:hover {
     background-color: #c11f1f; /* Cor do botão no hover */
 }
+.password-box {
+    position: relative; /* Necessário para o posicionamento absoluto da mensagem abaixo */
+}
+
+.password-box input {
+    width: 100%; /* Garante que a largura seja 100% do contêiner */
+    min-width: 300px; /* Define um valor mínimo para a largura da caixa de senha */
+    height: 50px; /* Aumenta a altura da caixa de senha */
+    padding: 15px; /* Aumenta o padding dentro da caixa */
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte dentro da caixa */
+    border: 1px solid #e72a2a;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    text-align: center;
+    color: #fff; /* Texto branco dentro da caixa de senha */
+}
+
+#copy-instruction {
+    font-size: 0.9rem;
+    color: #ccc; /* Cor cinza clara para a instrução */
+    margin-top: 5px;
+    font-style: italic;
+}
