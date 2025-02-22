@@ -5,28 +5,31 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4e1d2; /* Fundo castanho claro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Fundo escuro */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #4a2f27;
+    color: #fff; /* Texto branco para o corpo */
+    position: relative; /* Necessário para o posicionamento do botão */
 }
 
 .container {
     text-align: center;
-    background-color: #ffffff;
+    background-color: #1e1e1e; /* Cor de fundo escura */
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 400px;
+    max-width: 600px; /* Altere a largura máxima do contêiner se necessário */
+    position: relative; /* Necessário para o posicionamento do botão */
 }
 
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: #ffffff; /* Cor vermelha para o título */
 }
 
 .form-group {
@@ -36,21 +39,24 @@ h1 {
 label {
     font-size: 1rem;
     margin-right: 10px;
+    color: #fff; /* Cor branca para os rótulos */
 }
 
 input[type="number"] {
     width: 60px;
     padding: 5px;
     font-size: 1rem;
-    border: 1px solid #4a2f27;
+    border: 1px solid #e72a2a; /* Bordas vermelhas */
     border-radius: 5px;
     text-align: center;
+    background-color: #1e1e1e;
+    color: #fff; /* Texto branco dentro do campo */
 }
 
 button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #8a5d44;
+    background-color: #e72a2a; /* Cor vermelha para o botão */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -59,15 +65,55 @@ button {
 }
 
 button:hover {
-    background-color: #a67859;
+    background-color: #c11f1f; /* Cor do botão no hover */
 }
 
 .password-box input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1.2rem;
-    border: 1px solid #4a2f27;
+    width: 100%; /* Garante que a largura seja 100% do contêiner */
+    min-width: 300px; /* Define um valor mínimo para a largura da caixa de senha */
+    height: 50px; /* Aumenta a altura da caixa de senha */
+    padding: 15px; /* Aumenta o padding dentro da caixa */
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte dentro da caixa */
+    border: 1px solid #e72a2a;
     border-radius: 5px;
-    background-color: #f1f1f1;
+    background-color: #1e1e1e;
     text-align: center;
+    color: #fff; /* Texto branco dentro da caixa de senha */
+}
+
+/* Certificando-se de que as frases "Password Generator" e "Number of characters" ficam brancas */
+.number-of-characters {
+    color: #fff; /* Cor branca para as frases */
+}
+
+/* Estilo para a mensagem de sucesso */
+#copy-message {
+    position: absolute;
+    background-color: #4caf50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* Estilo para o botão "Voltar à Homepage" */
+#home-button {
+    position: absolute;
+    top: -40px;  /* Ajusta a distância do topo da div */
+    left: 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e72a2a; /* Cor vermelha para o botão */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#home-button:hover {
+    background-color: #c11f1f; /* Cor do botão no hover */
 }

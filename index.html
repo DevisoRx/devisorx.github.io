@@ -1,24 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <title>My Biography</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Password Generator</h1>
-        <div class="form-group">
-            <label for="length">Number of characters:</label>
-            <input type="number" id="length" value="12" min="4" max="20">
+    <header>
+        <div class="h1-container">
+            <h1>My Biography</h1>
         </div>
-        <button onclick="generatePassword()">Generate</button>
-        <div class="password-box">
-            <input type="text" id="password" readonly>
+    </header>
+    <section class="terminal">
+        <div class="terminal-body" id="terminal">
+            <p><span class="terminal-user" id="commandLine1"></span> <span id="command"></span></p>
+            <p class="terminal-output" id="output"></p>
+            <p><span class="terminal-user" id="commandLine2" style="display: none;"></span> <span id="command2"></span></p>
+            <p class="terminal-output" id="output2"></p>
         </div>
-    </div>
+    </section>
+    <section class="bio">
+        <img src="photos/gato.png" alt="My Photo" class="profile-pic">
+        <div class="bio-text">
+            <h2>About Me</h2>
+            <p>Hello! My name is DevisoR, I am Cybersecurity Enthusiast. Since childhood, I have always been passionate about hacking, which led me to explore this field deeply.</p>
+            <p>Currently, I work as SOC Analyst and always strive to evolve and learn more.</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 DevisoR. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const commandElement = document.getElementById("command");
+            const outputElement = document.getElementById("output");
+            const commandElement2 = document.getElementById("command2");
+            const outputElement2 = document.getElementById("output2");
+            const commandLine1 = document.getElementById("commandLine1");
+            const commandLine2 = document.getElementById("commandLine2");
 
-    <script src="Scripts/script.js"></script>
+            let directories = { "home": "home.html", "about": "about.html", "projects": "passgen.html", "contact": "contact.html" };
+
+            let commandText = "ls";
+            let commandText2 = "cat welcome.txt";
+            let welcomeMessage = "Welcome to my personal website! Feel free to explore.";
+
+            let index = 0;
+
+            // Função para digitar a linha do comando "user@website:~$"
+            let userIndex = 0;
+            function typeUserLine() {
+                const userText = "user@website:~$ ";
+                if (userIndex < userText.length) {
+                    commandLine1.innerHTML += userText[userIndex];
+                    userIndex++;
+                    setTimeout(typeUserLine, 50); // Reduzi o tempo para 50ms para acelerar a digitação
+                } else {
+                    setTimeout(typeCommand, 250); // Começa a digitar o comando após a linha do usuário
+                }
+            }
+
+            // Função para digitar o primeiro comando "ls"
+            function typeCommand() {
+                if (index < commandText.length) {
+                    commandElement.innerHTML += commandText[index];
+                    index++;
+                    setTimeout(typeCommand, 100); // Reduzi o tempo para 100ms para acelerar a digitação
+                } else {
+                    setTimeout(displayLsOutput, 250); // Exibe o output do comando "ls" após o comando ser digitado
+                }
+            }
+
+            // Função para exibir o output do comando "ls" de forma gradual
+            let outputIndex = 0;
+            let lsOutput = ["home", "about", "projects", "contact"]; // Simulação dos diretórios como uma lista
+            function displayLsOutput() {
+                if (outputIndex < lsOutput.length) {
+                    let dir = lsOutput[outputIndex];
+                    outputElement.innerHTML += `<a href="${directories[dir]}" style="color: red; text-decoration: none; margin-right: 10px;">${dir}</a> `;
+                    outputIndex++;
+                    setTimeout(displayLsOutput, 250); // Reduzi o tempo para 250ms entre cada diretório
+                } else {
+                    setTimeout(function() {
+                        commandLine2.style.display = "inline"; // Torna a segunda linha do comando visível
+                        typeUserLine2(); // Digita a linha do usuário novamente antes do segundo comando
+                    }, 500);
+                }
+            }
+
+            // Função para digitar a segunda linha "user@website:~$"
+            let userIndex2 = 0;
+            function typeUserLine2() {
+                const userText2 = "user@website:~$ ";
+                if (userIndex2 < userText2.length) {
+                    commandLine2.innerHTML += userText2[userIndex2];
+                    userIndex2++;
+                    setTimeout(typeUserLine2, 50); // Reduzi o tempo para 50ms
+                } else {
+                    setTimeout(typeCommand2, 250); // Começa a digitar o comando "cat welcome.txt"
+                }
+            }
+
+            // Função para digitar o segundo comando "cat welcome.txt"
+            let index2 = 0;
+            function typeCommand2() {
+                if (index2 < commandText2.length) {
+                    commandElement2.innerHTML += commandText2[index2];
+                    index2++;
+                    setTimeout(typeCommand2, 100); // Reduzi o tempo para 100ms
+                } else {
+                    setTimeout(displayWelcomeMessage, 250); // Exibe a mensagem após o comando ser digitado
+                }
+            }
+
+            // Função para exibir a mensagem de boas-vindas do comando "cat welcome.txt"
+            let welcomeMessageIndex = 0;
+            function displayWelcomeMessage() {
+                if (welcomeMessageIndex < welcomeMessage.length) {
+                    outputElement2.innerHTML += welcomeMessage[welcomeMessageIndex];
+                    welcomeMessageIndex++;
+                    setTimeout(displayWelcomeMessage, 50); // Reduzi o tempo para 50ms
+                }
+            }
+
+            // Começa a simulação de digitação com a linha do usuário
+            typeUserLine();
+        });
+    </script>
 </body>
 </html>
