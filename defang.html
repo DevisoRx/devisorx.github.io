@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defang Links/IPs</title>
+    <link rel="stylesheet" href="defangstyle.css">
+</head>
+<body>
+    <div class="container">
+        <button class="return-button" onclick="window.location.href='index.html'">Return Home</button>
+        <h2>Defang Link's e IP's</h2>
+        <textarea id="inputText" rows="5" placeholder="Insira links ou IPs aqui..."></textarea>
+        <br>
+        <button onclick="defangText()">Defang</button>
+        <button class="magic-defang-button" title="Automatically defang's any copied text" onclick="magicDefangText()">Magic Defang</button>
+        <br>
+        <textarea id="outputText" rows="5" readonly placeholder="Resultado..." onclick="copyToClipboard(event)"></textarea>
+    </div>
+
+    <script>
+        // Função Defang normal
+        function defangText() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = inputText
+                .replace(/http:\/\//g, "hxxp://")
+                .replace(/https:\/\//g, "hxxps://")
+                .replace(/\./g, '[.]');
+            document.getElementById("outputText").value = outputText;
+            copyToClipboard(); // Chama a função para copiar automaticamente
+        }
+
+        // Função Magic Defang (altera texto copiado e copia automaticamente)
+        function magicDefangText() {
+            navigator.clipboard.readText().then((clipboardText) => {
+                let outputText = clipboardText
+                    .replace(/http:\/\//g, "hxxp://")
+                    .replace(/https:\/\//g, "hxxps://")
+                    .replace(/\./g, '[.]');
+                document.getElementById("outputText").value = outputText;
+                copyToClipboard(); // Chama a função para copiar automaticamente
+            }).catch(err => {
+                alert("Erro ao acessar o texto copiado: " + err);
+            });
+        }
+
+        // Função para copiar o texto (usada também nas funções acima)
+        function copyToClipboard() {
+            let outputText = document.getElementById("outputText").value;
+            navigator.clipboard.writeText(outputText).then(() => {
+                // Não será exibida a mensagem de "copiado" automaticamente
+            }).catch(err => {
+                alert("Erro ao copiar: " + err);
+            });
+        }
+    </script>
+</body>
+</html>

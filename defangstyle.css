@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    position: relative;
+}
+
+.return-button {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e72a2a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    margin-left: 0;
+}
+
+.return-button:hover {
+    background-color: #c11f1f;
+}
+
+.container {
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    margin-top: 70px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e72a2a;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e72a2a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #740c6e;
+}
+
+.magic-defang-button {
+    background-color: #8a2be2;
+    margin-left: 20px;
+}
+
+/* Estilo para o tooltip do Magic Defang 
+.magic-defang-button[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999;
+}
+*/

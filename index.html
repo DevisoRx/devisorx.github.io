@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Biography</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="indexstyle.css">
 </head>
 <body>
     <header>
@@ -40,7 +40,7 @@
             const commandLine1 = document.getElementById("commandLine1");
             const commandLine2 = document.getElementById("commandLine2");
 
-            let directories = { "Home": "home.html", "About": "about.html", "PasswordGen": "passgen.html", "Contact": "contact.html" };
+            let directories = { "Home": "home.html", "Defang": "defang.html", "PasswordGen": "passgen.html", "Contact": "contact.html" };
 
             let commandText = "ls";
             let commandText2 = "cat welcome.txt";
@@ -74,7 +74,7 @@
 
             // Função para exibir o output do comando "ls" de forma gradual
             let outputIndex = 0;
-            let lsOutput = ["Home", "About", "PasswordGen", "Contact"]; // Simulação dos diretórios como uma lista
+            let lsOutput = ["Home", "Defang", "PasswordGen", "Contact"]; // Simulação dos diretórios como uma lista
             function displayLsOutput() {
                 if (outputIndex < lsOutput.length) {
                     let dir = lsOutput[outputIndex];
