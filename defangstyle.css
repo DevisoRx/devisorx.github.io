@@ -1,37 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Definir o estilo básico */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #121212;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #fff;
-    position: relative;
-}
-
-.return-button {
-    position: absolute;
-    top: -50px;
-    left: 0;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #e72a2a;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1000;
-    margin-left: 0;
-}
-
-.return-button:hover {
-    background-color: #c11f1f;
+    margin: 0;
+    flex-direction: column; /* Ajusta a direção dos elementos */
 }
 
 .container {
@@ -42,14 +19,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 600px;
-    position: relative;
-    margin-top: 70px;
+    position: relative; /* Mantido apenas para a estrutura do layout */
+    margin-top: 20px; /* Adiciona um pequeno espaço superior para o alinhamento do botão */
 }
 
 h2 {
     font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
+    color: #fff;
 }
 
 textarea {
@@ -60,6 +36,7 @@ textarea {
     font-size: 16px;
     background-color: #1e1e1e;
     color: #fff;
+    resize: none; /* Impede redimensionamento */
 }
 
 button {
@@ -70,33 +47,53 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin: 10px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #740c6e;
+    background-color: #c11f1f;
 }
 
+/* Ajustando o botão Magic Defang */
 .magic-defang-button {
-    background-color: #8a2be2;
-    margin-left: 20px;
+    background-color: #6a1b9a; /* Cor roxa */
+    margin-left: 10px; /* Separa o botão Magic Defang do outro botão */
 }
 
-/* Estilo para o tooltip do Magic Defang 
-.magic-defang-button[title]:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 1rem;
-    white-space: nowrap;
-    opacity: 1;
-    visibility: visible;
-    z-index: 9999;
+button:focus {
+    outline: none;
 }
-*/
+
+/* Ajustando o botão Return Home fora da div e alinhado com o topo e lado esquerdo da div */
+.return-button {
+    position: absolute;
+    top: -50px; /* Coloca o botão um pouco acima da div */
+    left: 0; /* Garante o alinhamento perfeito com o lado esquerdo */
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e72a2a; /* Cor vermelha para o botão */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    margin-left: 0; /* Garante que o botão não tenha qualquer margem à esquerda */
+}
+
+/* Barra de mensagem "Copied!" */
+#copyMessageContainer {
+    position: relative;
+    top: 10px; /* Ajusta a posição para embaixo da caixa de resultado */
+    width: 10%; /* Diminui a largura da barra verde para 10% */
+    text-align: center;
+    background-color: #4caf50;
+    color: white;
+    padding: 3px 10px; /* Reduz o padding */
+    font-size: 12px; /* Deixa o texto menor */
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    margin-left: auto;
+    margin-right: auto; /* Centraliza a barra verde */
+}

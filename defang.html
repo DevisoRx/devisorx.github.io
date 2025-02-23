@@ -10,12 +10,14 @@
     <div class="container">
         <button class="return-button" onclick="window.location.href='index.html'">Return Home</button>
         <h2>Defang Link's e IP's</h2>
-        <textarea id="inputText" rows="5" placeholder="Insira links ou IPs aqui..."></textarea>
+        <textarea id="inputText" rows="5" placeholder="Insert text here..."></textarea>
         <br>
         <button onclick="defangText()">Defang</button>
-        <button class="magic-defang-button" title="Automatically defang's any copied text" onclick="magicDefangText()">Magic Defang</button>
+        <button class="magic-defang-button" onclick="magicDefangText()" title="This will defang the text currently in the clipboard">Magic Defang</button>
         <br>
-        <textarea id="outputText" rows="5" readonly placeholder="Resultado..." onclick="copyToClipboard(event)"></textarea>
+        <textarea id="outputText" rows="5" readonly placeholder="Result..." onclick="copyToClipboard(event)"></textarea>
+        <!-- Mensagem de copiado -->
+        <div id="copyMessageContainer" class="copy-message">Copied!</div>
     </div>
 
     <script>
@@ -48,10 +50,20 @@
         function copyToClipboard() {
             let outputText = document.getElementById("outputText").value;
             navigator.clipboard.writeText(outputText).then(() => {
-                // Não será exibida a mensagem de "copiado" automaticamente
+                showCopyMessage(); // Mostra a mensagem de copiado
             }).catch(err => {
                 alert("Erro ao copiar: " + err);
             });
+        }
+
+        // Função para mostrar a mensagem de copiado
+        function showCopyMessage() {
+            let message = document.getElementById("copyMessageContainer");
+            message.innerText = "Copied!";
+            message.style.display = "block";
+            setTimeout(() => {
+                message.style.display = "none";
+            }, 1500); // A mensagem "Copied!" desaparece após 1.5 segundos
         }
     </script>
 </body>
