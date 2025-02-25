@@ -24,13 +24,34 @@
         <img src="photos/bike.png" alt="My Photo" class="profile-pic">
         <div class="bio-text">
             <h2>About Me</h2>
-            <p>Hello! My name is DevisoR, I am Cybersecurity Enthusiast. Since childhood, I have always been passionate about hacking, which led me to explore this field deeply.</p>
-            <p>Currently, I work as SOC Analyst and always strive to evolve and learn more.</p>
+            <p>Hello! My name is DevisoR, I'm passionate about cybersecurity and the ever-evolving world of technology. I thrive on solving complex problems and staying ahead in the digital landscape. Beyond my professional interests, I'm an adrenaline addicted. I love Formula 1, riding motorcycles, and flying drones. Anything that gets my heart racing i love it!</p>
+            <p>In the terminal you can nagivate to my tool's like the password generator or the URL/IP defanger <p>
         </div>
     </section>
+
+    <!-- Nova seção de Contactos -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out to me through any of the platforms below:</p>
+            <div class="social-icons">
+                <a href="https://github.com/DevisoRx" target="_blank" class="social-icon">
+                    <img src="photos\icons\github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/micael-goncalves/" target="_blank" class="social-icon">
+                    <img src="photos\icons\linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.hackthebox.eu/profile/DevisoR" target="_blank" class="social-icon">
+                    <img src="photos\icons\htb.jpeg" alt="HackTheBox">
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 DevisoR. All rights reserved.</p>
     </footer>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const commandElement = document.getElementById("command");
@@ -40,11 +61,11 @@
             const commandLine1 = document.getElementById("commandLine1");
             const commandLine2 = document.getElementById("commandLine2");
 
-            let directories = { "Home": "home.html", "Defang": "defang.html", "PasswordGen": "passgen.html", "Contact": "contact.html" };
+            let directories = { "Home": "home.html", "Defang": "defang.html", "PasswordGen": "passgen.html", "Contact": "#contact" };
 
             let commandText = "ls";
             let commandText2 = "cat welcome.txt";
-            let welcomeMessage = "Welcome to my personal website! Feel free to explore.";
+            let welcomeMessage = "Welcome to my personal website! Feel free to explore my tool's.";
 
             let index = 0;
 
