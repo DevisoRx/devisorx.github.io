@@ -1,0 +1,160 @@
+/* Importar a fonte "SD-Dystopian-Regular" no formato OTF */
+@font-face {
+    font-family: 'SD-Dystopian-Regular';
+    src: url('fonts/SD-Dystopian-Regular.otf') format('opentype');
+}
+
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do corpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff; /* Texto branco para o corpo */
+    position: relative; /* Necessário para o posicionamento do botão */
+}
+
+/* Estilo do contêiner */
+.container {
+    text-align: center;
+    background-color: #1e1e1e; /* Cor de fundo escura */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 600px; /* Altere a largura máxima do contêiner se necessário */
+    position: relative; /* Necessário para o posicionamento do botão */
+}
+
+/* Título (h1) */
+h1 {
+    font-family: 'SD-Dystopian-Regular', sans-serif; /* Aplica a fonte personalizada */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: red; /* Cor vermelha para o título */
+}
+
+/* Estilo dos rótulos (labels) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1rem;
+    margin-right: 10px;
+    color: #fff; /* Cor branca para os rótulos */
+}
+
+/* Estilo para os campos de entrada de número */
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #e72a2a; /* Bordas vermelhas */
+    border-radius: 5px;
+    text-align: center;
+    background-color: #1e1e1e;
+    color: #fff; /* Texto branco dentro do campo */
+}
+
+/* Estilo dos botões */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e72a2a; /* Cor vermelha para o botão */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #c11f1f; /* Cor do botão no hover */
+}
+
+/* Estilo da caixa de senha */
+.password-box input {
+    width: 100%; /* Garante que a largura seja 100% do contêiner */
+    min-width: 300px; /* Define um valor mínimo para a largura da caixa de senha */
+    height: 50px; /* Aumenta a altura da caixa de senha */
+    padding: 15px; /* Aumenta o padding dentro da caixa */
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte dentro da caixa */
+    border: 1px solid #e72a2a;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    text-align: center;
+    color: #fff; /* Texto branco dentro da caixa de senha */
+}
+
+/* Certificando-se de que as frases "Password Generator" e "Number of characters" ficam brancas */
+.number-of-characters {
+    color: #fff; /* Cor branca para as frases */
+}
+
+/* Estilo para a mensagem de sucesso */
+#copy-message {
+    position: absolute;
+    background-color: #4caf50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* Estilo para o botão "Voltar à Homepage" */
+#home-button {
+    position: absolute;
+    top: -40px;  /* Ajusta a distância do topo da div */
+    left: 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e72a2a; /* Cor vermelha para o botão */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#home-button:hover {
+    background-color: #c11f1f; /* Cor do botão no hover */
+}
+
+.password-box {
+    position: relative; /* Necessário para o posicionamento absoluto da mensagem abaixo */
+}
+
+/* Estilo para o campo de senha */
+.password-box input {
+    width: 100%; /* Garante que a largura seja 100% do contêiner */
+    min-width: 300px; /* Define um valor mínimo para a largura da caixa de senha */
+    height: 50px; /* Aumenta a altura da caixa de senha */
+    padding: 15px; /* Aumenta o padding dentro da caixa */
+    font-size: 1.5rem; /* Aumenta o tamanho da fonte dentro da caixa */
+    border: 1px solid #e72a2a;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    text-align: center;
+    color: #fff; /* Texto branco dentro da caixa de senha */
+}
+
+/* Instrução de cópia */
+#copy-instruction {
+    font-size: 0.9rem;
+    color: #ccc; /* Cor cinza clara para a instrução */
+    margin-top: 5px;
+    font-style: italic;
+}

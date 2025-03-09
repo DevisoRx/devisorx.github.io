@@ -12,8 +12,14 @@
         <h2>Defang Link's e IP's</h2>
         <textarea id="inputText" rows="5" placeholder="Insert text here..."></textarea>
         <br>
-        <button onclick="defangText()">Defang</button>
-        <button class="magic-defang-button" onclick="magicDefangText()" title="This will defang the text currently in the clipboard">Magic Defang</button>
+
+        <!-- Div para os três botões lado a lado -->
+        <div class="buttons-container">
+            <button onclick="defangText()">Defang</button>
+            <button class="magic-defang-button" onclick="magicDefangText()" title="This will defang the text currently in the clipboard">Magic Defang</button>
+            <button class="magic-defang-modified-button" onclick="magicDefangModifiedText()" title="This will mask all characters except the first and last and respect line breaks">Password Defang</button>
+        </div>
+
         <br>
         <textarea id="outputText" rows="5" readonly placeholder="Result..." onclick="copyToClipboard(event)"></textarea>
         <!-- Mensagem de copiado -->
@@ -21,7 +27,7 @@
     </div>
 
     <script>
-        // Função Defang normal
+        // Função Defang normal (não copia o texto automaticamente)
         function defangText() {
             let inputText = document.getElementById("inputText").value;
             let outputText = inputText
@@ -29,7 +35,6 @@
                 .replace(/https:\/\//g, "hxxps://")
                 .replace(/\./g, '[.]');
             document.getElementById("outputText").value = outputText;
-            copyToClipboard(); // Chama a função para copiar automaticamente
         }
 
         // Função Magic Defang (altera texto copiado e copia automaticamente)
@@ -44,6 +49,29 @@
             }).catch(err => {
                 alert("Erro ao acessar o texto copiado: " + err);
             });
+        }
+
+        // Função Magic Defang Modificado (troca todos os caracteres por * exceto o primeiro e último, respeitando quebras de linha)
+        function magicDefangModifiedText() {
+            let inputText = document.getElementById("inputText").value;
+            
+            // Divide o texto de entrada por linhas
+            let lines = inputText.split('\n');
+            
+            // Aplica a modificação a cada linha, preservando as quebras de linha
+            let outputText = lines.map(line => {
+                if (line.length > 2) {
+                    let firstChar = line.charAt(0);
+                    let lastChar = line.charAt(line.length - 1);
+                    let maskedText = firstChar + '*'.repeat(line.length - 2) + lastChar;
+                    return maskedText;
+                } else {
+                    // Caso a linha tenha 2 ou menos caracteres, não faz nada
+                    return line;
+                }
+            }).join('\n'); // Rejunta as linhas com quebras de linha preservadas
+
+            document.getElementById("outputText").value = outputText;
         }
 
         // Função para copiar o texto (usada também nas funções acima)

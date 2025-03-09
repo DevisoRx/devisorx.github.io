@@ -61,7 +61,7 @@
             const commandLine1 = document.getElementById("commandLine1");
             const commandLine2 = document.getElementById("commandLine2");
 
-            let directories = { "Home": "home.html", "Defang": "defang.html", "PasswordGen": "passgen.html", "Contact": "#contact" };
+            let directories = { "Home": "index.html", "Defang": "defang.html", "PasswordGen": "passgen.html", "Contact": "#contact", "TextDiff": "textdiff.html" };
 
             let commandText = "ls";
             let commandText2 = "cat welcome.txt";
@@ -95,7 +95,7 @@
 
             // Função para exibir o output do comando "ls" de forma gradual
             let outputIndex = 0;
-            let lsOutput = ["Home", "Defang", "PasswordGen", "Contact"]; // Simulação dos diretórios como uma lista
+            let lsOutput = ["Home", "Defang", "PasswordGen", "TextDiff",  "Contact"]; // Simulação dos diretórios como uma lista
             function displayLsOutput() {
                 if (outputIndex < lsOutput.length) {
                     let dir = lsOutput[outputIndex];

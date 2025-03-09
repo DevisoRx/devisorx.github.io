@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextDiff</title>
+    <link rel="stylesheet" href="textdiffstyle.css"> <!-- Referência ao arquivo CSS -->
+    <script>
+        function diffText() {
+            let text1 = document.getElementById("text1").value;
+            let text2 = document.getElementById("text2").value;
+
+            let diff = getCharacterDiff(text1, text2);
+            document.getElementById("output").innerHTML = diff;  // Exibe as diferenças
+        }
+
+        function getCharacterDiff(text1, text2) {
+            let diff = "";
+            let maxLength = Math.max(text1.length, text2.length); // Pega o tamanho máximo de ambos os textos
+
+            // Comparar caractere a caractere
+            for (let i = 0; i < maxLength; i++) {
+                let char1 = text1[i] || '';  // Obtém o caractere de text1 ou vazio se não houver
+                let char2 = text2[i] || '';  // Obtém o caractere de text2 ou vazio se não houver
+
+                // Se houver diferença, destacar o caractere
+                if (char1 !== char2) {
+                    if (char2) {
+                        diff += `<span style="color: green;">${escapeHTML(char2)}</span>`; // Destaca o caractere extra em text2
+                    }
+                    if (char1) {
+                        diff += `<span style="color: red;">${escapeHTML(char1)}</span>`; // Destaca o caractere extra em text1
+                    }
+                } else {
+                    // Se os caracteres forem iguais, não faz nada, ou seja, não adiciona o caractere
+                }
+
+                // Respeitar a quebra de linha
+                if (char1 === '\n' || char2 === '\n') {
+                    diff += "<br>";  // Adiciona uma quebra de linha no HTML
+                }
+            }
+
+            // Se não houver nenhuma diferença, retorna "Sem diferenças"
+            return diff || "No Differences";  
+        }
+
+        // Função para evitar problemas com caracteres especiais no HTML
+        function escapeHTML(text) {
+            return text.replace(/&/g, "&amp;")
+                       .replace(/</g, "&lt;")
+                       .replace(/>/g, "&gt;")
+                       .replace(/"/g, "&quot;")
+                       .replace(/'/g, "&#039;");
+        }
+
+        function swapTexts() {
+            let text1 = document.getElementById("text1").value;
+            let text2 = document.getElementById("text2").value;
+            document.getElementById("text1").value = text2;
+            document.getElementById("text2").value = text1;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Botão de Voltar à Homepage, posicionado acima das caixas de texto -->
+        <button class="return-button" onclick="window.location.href='index.html'">Return Home</button>
+
+        <!-- Título -->
+        <h2>Text Diff</h2>
+
+        <!-- Caixas de texto para entrada -->
+        <textarea id="text1" rows="5" placeholder="Insirt first text..."></textarea>
+        <textarea id="text2" rows="5" placeholder="Insirt second text..."></textarea>
+
+        <!-- Botões Comparar e Inverter Textos, agora abaixo das caixas de entrada -->
+        <div class="button-container">
+            <button onclick="diffText()">Compare</button>
+            <button onclick="swapTexts()">Invert</button>
+        </div>
+
+        <!-- Caixa de saída com as diferenças -->
+        <div id="output" class="output-box" placeholder="Diferença entre os textos"></div>
+    </div>
+</body>
+</html>

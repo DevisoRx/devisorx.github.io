@@ -25,7 +25,16 @@ body {
 
 h2 {
     font-size: 2rem;
-    color: #fff;
+    color: #e72a2a; /* Cor vermelha para o título */
+    font-family: 'SD Dystopian', sans-serif; /* Altera a fonte do título */
+}
+
+/* Definindo a fonte personalizada */
+@font-face {
+    font-family: 'SD Dystopian';
+    src: url('fonts/SD-Dystopian-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 textarea {
@@ -47,7 +56,6 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px;
     transition: background-color 0.3s;
 }
 
@@ -58,11 +66,18 @@ button:hover {
 /* Ajustando o botão Magic Defang */
 .magic-defang-button {
     background-color: #6a1b9a; /* Cor roxa */
-    margin-left: 10px; /* Separa o botão Magic Defang do outro botão */
 }
 
-button:focus {
-    outline: none;
+.magic-defang-modified-button {
+    background-color: #167c4d; /* Cor amarela */
+}
+
+/* Alinha os três botões na mesma linha */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 10px; /* Espaço acima dos botões */
 }
 
 /* Ajustando o botão Return Home fora da div e alinhado com o topo e lado esquerdo da div */
