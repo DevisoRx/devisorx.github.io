@@ -13,15 +13,20 @@
         <textarea id="inputText" rows="5" placeholder="Insert text here..."></textarea>
         <br>
 
-        <!-- Div para os três botões lado a lado -->
+        <!-- Div para os dois primeiros botões lado a lado -->
         <div class="buttons-container">
             <button onclick="defangText()">Defang</button>
             <button class="magic-defang-button" onclick="magicDefangText()" title="This will defang the text currently in the clipboard">Magic Defang</button>
-            <button class="magic-defang-modified-button" onclick="magicDefangModifiedText()" title="This will mask all characters except the first and last and respect line breaks">Password Defang</button>
         </div>
 
         <br>
         <textarea id="outputText" rows="5" readonly placeholder="Result..." onclick="copyToClipboard(event)"></textarea>
+
+        <!-- Botão "Password Defang" agora está abaixo da caixa de saída -->
+        <div class="buttons-container">
+            <button class="magic-defang-modified-button" onclick="magicDefangModifiedText()" title="This will mask all characters except the first and last and respect line breaks">Password Defang</button>
+        </div>
+
         <!-- Mensagem de copiado -->
         <div id="copyMessageContainer" class="copy-message">Copied!</div>
     </div>
@@ -35,17 +40,27 @@
                 .replace(/https:\/\//g, "hxxps://")
                 .replace(/\./g, '[.]');
             document.getElementById("outputText").value = outputText;
+            copyToClipboard();  // Copia o resultado para o clipboard
         }
 
-        // Função Magic Defang (altera texto copiado e copia automaticamente)
+        // Função Magic Defang (altera texto copiado, faz a mesma função de defang e copia novamente)
         function magicDefangText() {
             navigator.clipboard.readText().then((clipboardText) => {
                 let outputText = clipboardText
                     .replace(/http:\/\//g, "hxxp://")
                     .replace(/https:\/\//g, "hxxps://")
                     .replace(/\./g, '[.]');
+                
+                // Coloca o resultado na caixa de output
                 document.getElementById("outputText").value = outputText;
-                copyToClipboard(); // Chama a função para copiar automaticamente
+
+                // Copia o resultado de volta para o clipboard
+                navigator.clipboard.writeText(outputText).then(() => {
+                    showCopyMessage(); // Mostra a mensagem de "copiado"
+                }).catch(err => {
+                    alert("Erro ao copiar para o clipboard: " + err);
+                });
+
             }).catch(err => {
                 alert("Erro ao acessar o texto copiado: " + err);
             });

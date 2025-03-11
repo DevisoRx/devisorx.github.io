@@ -96,7 +96,7 @@ button:hover {
     margin-left: 0; /* Garante que o botão não tenha qualquer margem à esquerda */
 }
 
-/* Barra de mensagem "Copied!" - Corrigido para aparecer abaixo da caixa de resultado */
+/* Barra de mensagem "Copied!" */
 #copyMessageContainer {
     position: absolute; /* Coloca a mensagem fora do fluxo normal */
     top: 100%; /* Ajusta para que fique abaixo da caixa de texto */
@@ -111,3 +111,5 @@ button:hover {
     z-index: 1000; /* Garante que fique acima de outros elementos */
     pointer-events: none; /* Impede que a mensagem seja clicada */
 }
+
+

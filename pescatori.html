@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defang Links/IPs</title>
+    <link rel="stylesheet" href="pescatoristyle.css">
+</head>
+<body>
+    <div class="container">
+        <button class="return-button" onclick="window.location.href='index.html'">Return Home</button>
+        <h2>El Pescatori</h2>
+        
+        <!-- Imagem clicável para Magic Defang -->
+        <img src="photos/piscatori.png" alt="Magic Defang" class="magic-defang-image" onclick="magicDefangText(event)" style="cursor: pointer;">
+        
+        <!-- Mensagem de cópia -->
+        <div id="copyMessageContainer" class="copy-message">Copied!</div>
+    </div>
+
+    <script>
+        // Função Magic Defang (altera texto copiado e copia automaticamente)
+        function magicDefangText(event) {
+            navigator.clipboard.readText().then((clipboardText) => {
+                let outputText = clipboardText;
+
+                // Verificar se o texto contém http:// ou https:// antes de substituir
+                if (clipboardText.includes('http://')) {
+                    outputText = clipboardText.replace(/http:\/\//g, "hxxp://");
+                }
+
+                if (clipboardText.includes('https://')) {
+                    outputText = clipboardText.replace(/https:\/\//g, "hxxps://");
+                }
+
+                // Substituir todos os pontos por [.] após modificar http/https
+                outputText = outputText.replace(/\./g, '[.]');
+
+                // Escrever o texto alterado de volta para a área de transferência
+                navigator.clipboard.writeText(outputText).then(() => {
+                    showCopyMessage(event); // Mostra a mensagem de cópia ao lado do cursor
+                }).catch(err => {
+                    console.error("Erro ao copiar: ", err);
+                });
+            }).catch(err => {
+                console.error("Erro ao acessar o texto copiado: ", err);
+            });
+        }
+
+        // Função para mostrar a mensagem de cópia ao lado do cursor
+        function showCopyMessage(event) {
+            let message = document.getElementById("copyMessageContainer");
+
+            // Ajustar a posição ao lado do cursor
+            let offsetX = 1; // Deslocamento à direita
+            let offsetY = 1;  // Deslocamento abaixo do cursor
+
+            message.style.left = (event.clientX + offsetX) + "px";  // Ajustando à direita
+            message.style.top = (event.clientY + offsetY) + "px";   // Ajustando para baixo
+            message.style.display = "block";
+            
+            setTimeout(() => {
+                message.style.display = "none";
+            }, 1500); // A mensagem desaparece após 1.5 segundos
+        }
+    </script>
+</body>
+</html>

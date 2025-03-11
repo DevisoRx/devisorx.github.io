@@ -10,39 +10,46 @@
             let text1 = document.getElementById("text1").value;
             let text2 = document.getElementById("text2").value;
 
+            // Verifica se os textos são idênticos antes de fazer a comparação detalhada
+            if (text1 === text2) {
+                document.getElementById("output").innerHTML = "";  // Não exibe nada se forem idênticos
+                return;
+            }
+
             let diff = getCharacterDiff(text1, text2);
             document.getElementById("output").innerHTML = diff;  // Exibe as diferenças
         }
 
         function getCharacterDiff(text1, text2) {
             let diff = "";
-            let maxLength = Math.max(text1.length, text2.length); // Pega o tamanho máximo de ambos os textos
 
-            // Comparar caractere a caractere
-            for (let i = 0; i < maxLength; i++) {
+            let i = 0; // Índice para o texto 1
+            let j = 0; // Índice para o texto 2
+
+            // Percorrer os dois textos até o final
+            while (j < text2.length) {
                 let char1 = text1[i] || '';  // Obtém o caractere de text1 ou vazio se não houver
-                let char2 = text2[i] || '';  // Obtém o caractere de text2 ou vazio se não houver
+                let char2 = text2[j] || '';  // Obtém o caractere de text2 ou vazio se não houver
 
-                // Se houver diferença, destacar o caractere
+                // Se os caracteres forem diferentes e o caractere de text2 existir
                 if (char1 !== char2) {
-                    if (char2) {
-                        diff += `<span style="color: green;">${escapeHTML(char2)}</span>`; // Destaca o caractere extra em text2
-                    }
-                    if (char1) {
-                        diff += `<span style="color: red;">${escapeHTML(char1)}</span>`; // Destaca o caractere extra em text1
-                    }
-                } else {
-                    // Se os caracteres forem iguais, não faz nada, ou seja, não adiciona o caractere
+                    // Adiciona o caractere de text2 à diferença
+                    if (char2) diff += `<span style="color: green;">${escapeHTML(char2)}</span>`; // Destaca o caractere extra em text2
                 }
 
-                // Respeitar a quebra de linha
-                if (char1 === '\n' || char2 === '\n') {
-                    diff += "<br>";  // Adiciona uma quebra de linha no HTML
+                // Se houver uma quebra de linha, adiciona <br> na saída
+                if (char2 === '\n') {
+                    diff += "<br>";
                 }
+
+                // Avança os índices, mas só avança i se o caractere de text1 corresponder ao de text2
+                if (char1 === char2) {
+                    i++;
+                }
+                j++;
             }
 
-            // Se não houver nenhuma diferença, retorna "Sem diferenças"
-            return diff || "No Differences";  
+            return diff || "";  // Se não houver diferença, retorna uma string vazia
         }
 
         // Função para evitar problemas com caracteres especiais no HTML
@@ -71,8 +78,8 @@
         <h2>Text Diff</h2>
 
         <!-- Caixas de texto para entrada -->
-        <textarea id="text1" rows="5" placeholder="Insirt first text..."></textarea>
-        <textarea id="text2" rows="5" placeholder="Insirt second text..."></textarea>
+        <textarea id="text1" rows="5" placeholder="Insira o primeiro texto..."></textarea>
+        <textarea id="text2" rows="5" placeholder="Insira o segundo texto..."></textarea>
 
         <!-- Botões Comparar e Inverter Textos, agora abaixo das caixas de entrada -->
         <div class="button-container">
